@@ -1,0 +1,80 @@
+{
+  "entities": {
+    "ChatMessage": {
+      "title": "Chat Message",
+      "description": "A message sent in the community chat",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The UID of the user who sent the message"
+        },
+        "userName": {
+          "type": "string",
+          "description": "The anonymous name of the user"
+        },
+        "message": {
+          "type": "string",
+          "description": "The content of the message"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the message was sent"
+        }
+      },
+      "required": ["userId", "userName", "message", "createdAt"]
+    },
+    "JournalEntry": {
+      "title": "Journal Entry",
+      "description": "A personal journal entry recorded by the user",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The UID of the user who owns the entry"
+        },
+        "content": {
+          "type": "string",
+          "description": "The transcription of the voice journal"
+        },
+        "mood": {
+          "type": "string",
+          "description": "The mood detected from the recording"
+        },
+        "emoji": {
+          "type": "string",
+          "description": "An emoji representing the mood"
+        },
+        "sentiment_score": {
+          "type": "number",
+          "description": "Sentiment score from -1 to 1"
+        },
+        "insight": {
+          "type": "string",
+          "description": "AI-generated insight for the entry"
+        },
+        "audio_url": {
+          "type": "string",
+          "description": "Optional URL to the recorded audio file"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the entry was created"
+        }
+      },
+      "required": ["userId", "content", "mood", "emoji", "sentiment_score", "insight", "created_at"]
+    }
+  },
+  "firestore": {
+    "/chat_messages/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "Global community chat messages"
+    },
+    "/journals/{journalId}": {
+      "schema": "JournalEntry",
+      "description": "Personal user journal entries"
+    }
+  }
+}

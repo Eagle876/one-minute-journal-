@@ -1,0 +1,5 @@
+{
+  "name": "One Min Journal",
+  "description": "A voice-first mental health journal with AI sentiment analysis and community chat.",
+  "requestFramePermissions": ["microphone"]
+}
